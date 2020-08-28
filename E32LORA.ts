@@ -49,9 +49,24 @@ namespace E32LORA {
 
 
 
+
+
 // ==========================================================================
 // Advanced Export Functions
+//
 // ==========================================================================
+
+
+    /**
+     * hexString2
+     */
+    //% block
+    //% weight=20
+    export function hexString2(value: number): string {
+        return decToHexString(value, 16)
+    }
+
+
 
 
     /**
