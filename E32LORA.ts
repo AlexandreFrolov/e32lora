@@ -21,7 +21,7 @@ namespace E32LORA {
      */
     //% block
     //% weight=38
-      export function e32Init(m0: DigitalPin, m1: DigitalPin, tx: DigitalPin, rx: DigitalPin, baud: BaudRate) {
+      export function e32Init(m0: DigitalPin, m1: DigitalPin, tx: SerialPin, rx: SerialPin, baud: BaudRate) {
 
          serial.redirect(tx, rx, baud)
 
