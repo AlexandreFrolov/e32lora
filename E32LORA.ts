@@ -20,19 +20,6 @@ namespace E32LORA {
 
 
 
-    /**
-     * e32Init
-     */
-    //% weight=38
-    //% block="E32LORA pin config:|M0: %m0|M1: %m1|TX: %tx|RX: %rx"
-      export function e32Init(m0: DigitalPin, m1: DigitalPin, tx: SerialPin, rx: SerialPin, baud: BaudRate) {
-          pinM0 = m0
-          pinM1 = m1
-          serial.redirect(tx, rx, baud)
-      }
-
-
-
 
 
     /**
@@ -66,13 +53,23 @@ namespace E32LORA {
 // Export Functions.
 // ==========================================================================
 
+    /**
+     * e32Init
+     */
+    //% weight=44
+    //% block="E32LORA pin config:|M0: %m0|M1: %m1|TX: %tx|RX: %rx"
+      export function e32Init(m0: DigitalPin, m1: DigitalPin, tx: SerialPin, rx: SerialPin, baud: BaudRate) {
+          pinM0 = m0
+          pinM1 = m1
+          serial.redirect(tx, rx, baud)
+    }
 
 
     /**
      * setSetupMode
      */
     //% block
-    //% weight=40
+    //% weight=42
     export function setSetupMode (m0: DigitalPin, m1: DigitalPin) {
         pins.digitalWritePin(m0, 1)
         pins.digitalWritePin(m1, 1)
@@ -83,7 +80,7 @@ namespace E32LORA {
      * setNormalMode
      */
     //% block
-    //% weight=42
+    //% weight=40
     export function setNormalMode (m0: DigitalPin, m1: DigitalPin) {
         pins.digitalWritePin(m0, 0)
         pins.digitalWritePin(m1, 0)
