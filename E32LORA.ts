@@ -74,7 +74,7 @@ namespace E32LORA {
     //% weight=43
     export function pinConfig (): string {
         let rc=""
-        rc = convert_to_text(pinM0)
+        rc = convertToText(pinM0)
         return rc
     }
 
