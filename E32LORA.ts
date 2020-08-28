@@ -22,12 +22,10 @@ namespace E32LORA {
     //% block
     //% weight=40
       export function pins(clk: DigitalPin, dio: DigitalPin, cs: DigitalPin) {
-         let dsclk = clk;
-         let dsdio = dio;
-         let dscs = cs;
-         pins.digitalWritePin(dsclk, 0);
-         pins.digitalWritePin(dscs, 0);
-        }
+         pins.digitalWritePin(clk, 0)
+         pins.digitalWritePin(dio, 0);
+         pins.digitalWritePin(cs, 0);
+      }
 
 
 
