@@ -22,6 +22,26 @@ namespace E32LORA {
         clk: DigitalPin;
         dio: DigitalPin;
         cs: DigitalPin;
+
+        /**
+         * create a E32LORA_WRL object.
+         * @param clk the CLK pin for E32LORA, eg: DigitalPin.P13
+         * @param dio the DIO pin for E32LORA, eg: DigitalPin.P14
+         * @param cs the CS pin for E32LORA, eg: DigitalPin.P15
+         */
+        //% weight=200 blockGap=8
+        //% blockId="E32LORA_create" block="CLK %clk|DIO %dio|CS %cs"
+        export function create(clk: DigitalPin, dio: DigitalPin, cs: DigitalPin): E32LORA_WRL {
+            let ds = new E32LORA_WRL();
+            ds.clk = clk;
+            ds.dio = dio;
+            ds.cs = cs;
+            pins.digitalWritePin(ds.clk, 0);
+            pins.digitalWritePin(ds.cs, 0);
+            return ds;
+        }
+
+
     }
 
 
