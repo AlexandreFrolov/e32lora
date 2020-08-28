@@ -7,7 +7,7 @@
 
 ## Add extension
 
-Copy and paste this to MakeCode Extension search box:
+Copy and paste this to MS MakeCode Extension search box:
 https://github.com/AlexandreFrolov/E32LORA
 
 
