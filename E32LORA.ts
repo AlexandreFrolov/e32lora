@@ -11,9 +11,9 @@ namespace E32LORA {
     function E32LORA_init() {
     }
 
-    let pinM0
-    let pinM1
-    let pinAUX
+    let pinM0: DigitalPin
+    let pinM1: DigitalPin
+    let pinAUX: DigitalPin
 
 
     E32LORA_init()
