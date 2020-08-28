@@ -11,6 +11,10 @@ namespace E32LORA {
     function E32LORA_init() {
     }
 
+    let pinM0 = new DigitalPin()
+    let pinM1 = new DigitalPin()
+
+
     E32LORA_init()
 //    setStatus(0x08)
 
@@ -20,13 +24,11 @@ namespace E32LORA {
      * e32Init
      */
     //% weight=38
-    //% block="M0 %m0|M1 %m1|TX %tx|RX %rx"
+    //% block="E32LORA pin config:|M0 %m0|M1 %m1|TX %tx|RX %rx"
       export function e32Init(m0: DigitalPin, m1: DigitalPin, tx: SerialPin, rx: SerialPin, baud: BaudRate) {
-
-         serial.redirect(tx, rx, baud)
-
-// //        pins.digitalWritePin(rx, 0)
-//         pins.digitalWritePin(tx, 0);
+          pinM0 = m0
+          pinM1 = m1
+          serial.redirect(tx, rx, baud)
       }
 
 
