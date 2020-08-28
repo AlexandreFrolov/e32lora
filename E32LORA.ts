@@ -67,18 +67,6 @@ namespace E32LORA {
           serial.redirect(tx, rx, baud)
     }
 
-    /**
-     * pinConfig
-     */
-    //% block
-    //% weight=43
-    export function pinConfig (): string {
-        let rc=""
-        rc = convertToText(pinM0)
-        return rc
-    }
-
-
 
     /**
      * setSetupMode
