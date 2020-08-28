@@ -47,26 +47,6 @@ namespace E32LORA {
 // ==========================================================================
 
 
-    /**
-     * setSetupMode
-     */
-    //% block
-    //% weight=40
-    function setSetupMode () {
-        pins.digitalWritePin(DigitalPin.P12, 1)
-        pins.digitalWritePin(DigitalPin.P16, 1)
-    }
-
-
-    /**
-     * setNormalMode
-     */
-    //% block
-    //% weight=42
-    function setNormalMode () {
-        pins.digitalWritePin(DigitalPin.P12, 0)
-        pins.digitalWritePin(DigitalPin.P16, 0)
-    }
 
 
 // ==========================================================================
