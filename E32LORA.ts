@@ -24,7 +24,7 @@ namespace E32LORA {
      * e32Init
      */
     //% weight=38
-    //% block="E32LORA pin config:|M0 %m0|M1 %m1|TX %tx|RX %rx"
+    //% block="E32LORA pin config:|M0: %m0|M1: %m1|TX: %tx|RX: %rx"
       export function e32Init(m0: DigitalPin, m1: DigitalPin, tx: SerialPin, rx: SerialPin, baud: BaudRate) {
           pinM0 = m0
           pinM1 = m1
