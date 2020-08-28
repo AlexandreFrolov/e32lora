@@ -25,7 +25,7 @@ namespace E32LORA {
 
          serial.redirect(tx, rx, baud)
 
-//         pins.digitalWritePin(rx, 0)
+// //        pins.digitalWritePin(rx, 0)
 //         pins.digitalWritePin(tx, 0);
       }
 
