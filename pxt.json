@@ -1,0 +1,17 @@
+{
+    "name": "E32LORA",
+    "version": "0.1.1",
+    "description": "Package for Wireless Module EBYTE E32-XX",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "E32LORA.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
