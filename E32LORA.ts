@@ -53,7 +53,7 @@ namespace E32LORA {
      */
     //% block
     //% weight=40
-    function setSetupMode () {
+    export function setSetupMode () {
         pins.digitalWritePin(DigitalPin.P12, 1)
         pins.digitalWritePin(DigitalPin.P16, 1)
     }
@@ -64,7 +64,7 @@ namespace E32LORA {
      */
     //% block
     //% weight=42
-    function setNormalMode () {
+    export function setNormalMode () {
         pins.digitalWritePin(DigitalPin.P12, 0)
         pins.digitalWritePin(DigitalPin.P16, 0)
     }
