@@ -73,21 +73,31 @@ namespace E32LORA {
      */
     //% block
     //% weight=42
-    export function setSetupMode (m0: DigitalPin, m1: DigitalPin) {
-        pins.digitalWritePin(m0, 1)
-        pins.digitalWritePin(m1, 1)
+    export function setSetupMode () {
+        pins.digitalWritePin(pinM0, 1)
+        pins.digitalWritePin(pinM1, 1)
     }
-
 
     /**
      * setNormalMode
      */
     //% block
     //% weight=40
-    export function setNormalMode (m0: DigitalPin, m1: DigitalPin) {
-        pins.digitalWritePin(m0, 0)
-        pins.digitalWritePin(m1, 0)
+    export function setNormalMode () {
+        pins.digitalWritePin(pinM0, 0)
+        pins.digitalWritePin(pinM1, 0)
     }
+
+    /**
+     * auxPin
+     */
+    //% block
+    //% weight=38
+    export function auxPin () {
+        return pins.digitalReadPin(pinAUX)
+    }
+
+
 
 
 // ==========================================================================
