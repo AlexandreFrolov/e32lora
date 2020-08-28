@@ -17,14 +17,13 @@ namespace E32LORA {
 
 
     /**
-     * pins
+     * uartPins
      */
     //% block
-    //% weight=40
-      export function pins(clk: DigitalPin, dio: DigitalPin, cs: DigitalPin) {
-         pins.digitalWritePin(clk, 0)
-         pins.digitalWritePin(dio, 0);
-         pins.digitalWritePin(cs, 0);
+    //% weight=38
+      export function uartPins(rx: DigitalPin, tx: DigitalPin) {
+         pins.digitalWritePin(rx, 0)
+         pins.digitalWritePin(tx, 0);
       }
 
 
