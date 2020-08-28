@@ -46,6 +46,17 @@ namespace E32LORA {
 
 
 
+      export function pins(clk: DigitalPin, dio: DigitalPin, cs: DigitalPin) {
+         let dsclk = clk;
+         let dsdio = dio;
+         let dscs = cs;
+         pins.digitalWritePin(dsclk, 0);
+         pins.digitalWritePin(dscs, 0);
+        }
+
+
+
+
 
     /**
      * decToHexString
