@@ -16,6 +16,18 @@ namespace E32LORA {
 
 
     /**
+     * E32LORA class
+     */
+    export class E32LORA_WRL {
+        clk: DigitalPin;
+        dio: DigitalPin;
+        cs: DigitalPin;
+    }
+
+
+
+
+    /**
      * decToHexString
      *
      * https://stackoverflow.com/questions/50967455/from-decimal-to-hexadecimal-without-tostring
