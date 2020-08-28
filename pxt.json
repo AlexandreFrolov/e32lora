@@ -1,7 +1,7 @@
 {
     "name": "E32LORA",
     "version": "0.1.1",
-    "description": "Package for Wireless Module EBYTE E32-XX",
+    "description": "Package for Wireless Module EBYTE E32XX",
     "license": "MIT",
     "dependencies": {
         "core": "*"
