@@ -31,7 +31,7 @@ namespace E32LORA {
          */
         //% weight=200 blockGap=8
         //% blockId="E32LORA_create" block="CLK %clk|DIO %dio|CS %cs"
-        export function create(clk: DigitalPin, dio: DigitalPin, cs: DigitalPin): E32LORA_WRL {
+        export create(clk: DigitalPin, dio: DigitalPin, cs: DigitalPin): E32LORA_WRL {
             let ds = new E32LORA_WRL();
             ds.clk = clk;
             ds.dio = dio;
