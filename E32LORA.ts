@@ -172,7 +172,7 @@ namespace E32LORA {
     export function e32reset () {
       setSetupMode()
       basic.pause(100)
-//      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
+      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
       let dataToSend=Buffer.fromHex("c4c4c4")
       serial.writeBuffer(dataToSend)
       setNormalMode()
