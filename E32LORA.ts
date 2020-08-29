@@ -15,11 +15,6 @@ namespace E32LORA {
     let pinM1: DigitalPin
     let pinAUX: DigitalPin
 
-
-    E32LORA_init()
-//    setStatus(0x08)
-
-
     /**
      * E32 Pin Config class
      */
@@ -30,6 +25,14 @@ namespace E32LORA {
         tx: SerialPin;
         rx: SerialPin;
     }
+
+    let e32Pins = new E32PinConfig();
+
+    E32LORA_init()
+//    setStatus(0x08)
+
+
+
 
 
     /**
