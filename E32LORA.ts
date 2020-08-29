@@ -8,6 +8,8 @@ namespace E32LORA {
 //    const E32LORA_I2C_ADDR=0x68
 
 
+    let onReceivedStringHandler: (receivedString: string) => void;
+
     function E32LORA_init() {
     }
 
