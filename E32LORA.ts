@@ -188,7 +188,7 @@ namespace E32LORA {
      */
     function e32auxTimeout(value: number) {
       basic.pause(value)
-      if(auxPin == 0){
+      if(auxPin() == 0){
         basic.showIcon(IconNames.Angry)
         basic.showString("e: aux timeout")
       }
