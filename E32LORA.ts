@@ -71,7 +71,7 @@ namespace E32LORA {
     //% m0.defl=DigitalPin.P16 m1.defl=DigitalPin.P12 aux.defl=DigitalPin.P1 tx.defl=SerialPin.P2 rx.defl=SerialPin.P8 baud.defl=BaudRate.BaudRate9600
       export function e32Init(m0: DigitalPin, m1: DigitalPin, aux: DigitalPin, tx: SerialPin, rx: SerialPin, baud: BaudRate) {
 
-          serial.redirect(tx, rx, baud)
+          serial.redirect(rx, tx, baud)
 
           e32Pins.m0 = m0;
           e32Pins.m1 = m1;
