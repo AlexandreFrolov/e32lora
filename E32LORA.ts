@@ -8,7 +8,6 @@ namespace E32LORA {
 //    const E32LORA_I2C_ADDR=0x68
 
 
-    let onReceivedStringHandler: (receivedString: string) => void;
 
     function E32LORA_init() {
     }
@@ -38,12 +37,15 @@ namespace E32LORA {
     E32LORA_init()
 //    setStatus(0x08)
 
-serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
-    onReceivedString(serial.readString())
-//    basic.showIcon(IconNames.Heart)
-//    OLED.writeStringNewLine(serial.readString())
-//    basic.showIcon(IconNames.Yes)
-})
+    let onReceivedStringHandler: (receivedString: string) => void;
+
+    serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+        let str: string = serial.readString()
+        onReceivedString(str)
+    //    basic.showIcon(IconNames.Heart)
+    //    OLED.writeStringNewLine(serial.readString())
+    //    basic.showIcon(IconNames.Yes)
+    })
 
 
 
