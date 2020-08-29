@@ -38,7 +38,11 @@ namespace E32LORA {
     E32LORA_init()
 //    setStatus(0x08)
 
-
+serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+    basic.showIcon(IconNames.Heart)
+    OLED.writeStringNewLine(serial.readString())
+    basic.showIcon(IconNames.Yes)
+})
 
 
 
