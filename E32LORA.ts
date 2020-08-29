@@ -11,10 +11,6 @@ namespace E32LORA {
     function E32LORA_init() {
     }
 
-    let pinM0: DigitalPin
-    let pinM1: DigitalPin
-    let pinAUX: DigitalPin
-
     /**
      * E32 Pin Config class
      */
@@ -74,15 +70,12 @@ namespace E32LORA {
     //% block="E32LORA pin config:|M0: %m0 M1: %m1 AUX: %aux|TX: %tx RX: %rx BAUD: %baud"
     //% m0.defl=DigitalPin.P16 m1.defl=DigitalPin.P12 aux.defl=DigitalPin.P1 tx.defl=SerialPin.P2 rx.defl=SerialPin.P8 baud.defl=BaudRate.BaudRate9600
       export function e32Init(m0: DigitalPin, m1: DigitalPin, aux: DigitalPin, tx: SerialPin, rx: SerialPin, baud: BaudRate) {
-          pinM0 = m0
-          pinM1 = m1
-          pinAUX = aux
+
           serial.redirect(tx, rx, baud)
 
           e32Pins.m0 = m0;
           e32Pins.m1 = m1;
           e32Pins.aux= aux;
-
           e32Pins.tx= tx;
           e32Pins.rx= rx;
           e32Pins.baud = baud;
