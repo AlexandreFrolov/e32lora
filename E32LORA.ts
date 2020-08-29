@@ -41,7 +41,7 @@ namespace E32LORA {
 
     serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
         let str: string = serial.readString()
-        onReceivedString(str)
+        onReceivedStringHandler(str)
     //    basic.showIcon(IconNames.Heart)
     //    OLED.writeStringNewLine(serial.readString())
     //    basic.showIcon(IconNames.Yes)
