@@ -20,7 +20,16 @@ namespace E32LORA {
 //    setStatus(0x08)
 
 
-
+    /**
+     * E32 Pin Config class
+     */
+    export class E32PinConfig {
+        m0: DigitalPin;
+        m1: DigitalPin;
+        aux: DigitalPin;
+        tx: SerialPin;
+        rx: SerialPin;
+    }
 
 
     /**
