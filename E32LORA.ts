@@ -24,6 +24,7 @@ namespace E32LORA {
         aux: DigitalPin;
         tx: SerialPin;
         rx: SerialPin;
+        baud: BaudRate;
     }
 
     let e32Pins = new E32PinConfig();
@@ -77,6 +78,14 @@ namespace E32LORA {
           pinM1 = m1
           pinAUX = aux
           serial.redirect(tx, rx, baud)
+
+          e32Pins.m0 = m0;
+          e32Pins.m1 = m1;
+          e32Pins.aux= aux;
+
+          e32Pins.tx= tx;
+          e32Pins.rx= rx;
+          e32Pins.baud = baud;
     }
 
 
