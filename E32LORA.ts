@@ -169,16 +169,30 @@ namespace E32LORA {
     //% weight=34
     export function e32reset () {
       setSetupMode()
-//      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
       let dataToSend=Buffer.fromHex("c4c4c4")
       serial.writeBuffer(dataToSend)
       setNormalMode()
-      basic.pause(500)
+//      basic.pause(500)
+      auxTimeout(100)
     }
 
 
 
+// ==========================================================================
+// Internal Functions
+// ==========================================================================
 
+
+    /**
+     * auxTimeout
+     */
+    function auxTimeout(value: number) {
+      basic.pause(value)
+      if(auxPin == 0){
+        basic.showIcon(IconNames.Angry)
+        basic.showString("e: aux timeout")
+      }
+    }
 
 
 // ==========================================================================
