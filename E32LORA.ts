@@ -26,6 +26,14 @@ namespace E32LORA {
     }
 
     let e32Pins = new E32PinConfig();
+    let initialized = false;
+
+    function init() {
+        if (initialized) return;
+        initialized = true;
+//        onDataReceived(handleDataReceived);
+    }
+
 
     E32LORA_init()
 //    setStatus(0x08)
