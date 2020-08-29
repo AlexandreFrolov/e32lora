@@ -85,6 +85,16 @@ namespace E32LORA {
     }
 
 
+
+    /**
+     * e32SendString
+     */
+    //% block
+    //% weight=50
+    export function e32SendString (str: string) {
+      serial.writeLine(str)
+    }
+
     /**
      * setSetupMode
      */
