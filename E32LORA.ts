@@ -112,11 +112,11 @@ namespace E32LORA {
     }
 
     /**
-     * version
+     * e32version
      */
     //% block
     //% weight=36
-    export function version (): string {
+    export function e32version (): string {
       let rcvData: Buffer = null
       let params = ""
 
@@ -126,13 +126,38 @@ namespace E32LORA {
       serial.writeBuffer(dataToSend2)
       rcvData = serial.readBuffer(4)
 
-      let recArray2=rcvData.toArray(NumberFormat.UInt8LE)
-      for (let idx = 0; idx <= recArray2.length - 1; idx++) {
-          params = "" + params + ("" + decToHexString(recArray2[idx], 16) + " ")
+      let recArray=rcvData.toArray(NumberFormat.UInt8LE)
+      for (let idx = 0; idx <= recArray.length - 1; idx++) {
+          params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
       }
-//      setNormalMode()
+      setNormalMode()
       return params
     }
+
+    /**
+     * e32parameters
+     */
+    //% block
+    //% weight=34
+    export function e32parameters () {
+      let rcvData: Buffer = null
+      let params = ""
+
+      setSetupMode()
+      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
+      let dataToSend=Buffer.fromHex("c1c1c1")
+      serial.writeBuffer(dataToSend)
+      rcvData = serial.readBuffer(6)
+      let recArray=rcvData.toArray(NumberFormat.UInt8LE)
+      for (let idx = 0; idx <= recArray.length - 1; idx++) {
+          params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
+      }
+      setNormalMode()
+      return params
+    }
+
+
+
 
 
 // ==========================================================================
