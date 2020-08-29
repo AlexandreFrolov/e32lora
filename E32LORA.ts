@@ -164,6 +164,26 @@ namespace E32LORA {
     }
 
 
+    /**
+     * e32reset
+     */
+    //% block
+    //% weight=34
+    export function e32reset () {
+      setSetupMode()
+      basic.pause(100)
+//      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
+      let dataToSend=Buffer.fromHex("c4c4c4")
+      serial.writeBuffer(dataToSend)
+      setNormalMode()
+      basic.pause(100)
+    }
+
+
+
+
+
+
 // ==========================================================================
 // Advanced Export Functions
 // ==========================================================================
