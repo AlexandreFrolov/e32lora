@@ -111,7 +111,26 @@ namespace E32LORA {
         return pins.digitalReadPin(e32Pins.aux)
     }
 
+    /**
+     * version
+     */
+    //% block
+    //% weight=36
+    export function version (): string {
+      setSetupMode()
+      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
+      let dataToSend2=Buffer.fromHex("c3c3c3")
+      serial.writeBuffer(dataToSend2)
+      rcvData = serial.readBuffer(4)
 
+      let recArray2=rcvData.toArray(NumberFormat.UInt8LE)
+      let params = ""
+      for (let idx = 0; idx <= recArray2.length - 1; idx++) {
+          params = "" + params + ("" + decToHexString(recArray2[idx], 16) + " ")
+      }
+      setNormalMode()
+      return params
+    }
 
 
 // ==========================================================================
