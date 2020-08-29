@@ -124,6 +124,7 @@ namespace E32LORA {
       let params = ""
 
       setSetupMode()
+      basic.pause(100)
 //      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
       let dataToSend2=Buffer.fromHex("c3c3c3")
       serial.writeBuffer(dataToSend2)
@@ -134,6 +135,7 @@ namespace E32LORA {
           params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
       }
       setNormalMode()
+      basic.pause(100)
       return params
     }
 
@@ -147,6 +149,7 @@ namespace E32LORA {
       let params = ""
 
       setSetupMode()
+      basic.pause(100)
 //      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
       let dataToSend=Buffer.fromHex("c1c1c1")
       serial.writeBuffer(dataToSend)
@@ -156,6 +159,7 @@ namespace E32LORA {
           params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
       }
       setNormalMode()
+      basic.pause(100)
       return params
     }
 
