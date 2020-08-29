@@ -173,7 +173,7 @@ namespace E32LORA {
       serial.writeBuffer(dataToSend)
       setNormalMode()
 //      basic.pause(500)
-      auxTimeout(100)
+      e32auxTimeout(100)
     }
 
 
@@ -184,9 +184,9 @@ namespace E32LORA {
 
 
     /**
-     * auxTimeout
+     * e32auxTimeout
      */
-    function auxTimeout(value: number) {
+    function e32auxTimeout(value: number) {
       basic.pause(value)
       if(auxPin == 0){
         basic.showIcon(IconNames.Angry)
