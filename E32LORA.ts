@@ -93,7 +93,7 @@ namespace E32LORA {
     export function setSetupMode () {
         pins.digitalWritePin(e32Pins.m0, 1)
         pins.digitalWritePin(e32Pins.m1, 1)
-        basic.pause(100)
+        e32auxTimeout(100)
     }
 
     /**
@@ -104,7 +104,7 @@ namespace E32LORA {
     export function setNormalMode () {
         pins.digitalWritePin(e32Pins.m0, 0)
         pins.digitalWritePin(e32Pins.m1, 0)
-        basic.pause(100)
+        e32auxTimeout(100)
     }
 
     /**
@@ -172,7 +172,6 @@ namespace E32LORA {
       let dataToSend=Buffer.fromHex("c4c4c4")
       serial.writeBuffer(dataToSend)
       setNormalMode()
-//      basic.pause(500)
       e32auxTimeout(100)
     }
 
