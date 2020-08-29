@@ -124,7 +124,6 @@ namespace E32LORA {
       let params = ""
 
       setSetupMode()
-      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
       let dataToSend2=Buffer.fromHex("c3c3c3")
       serial.writeBuffer(dataToSend2)
       rcvData = serial.readBuffer(4)
@@ -147,7 +146,6 @@ namespace E32LORA {
       let params = ""
 
       setSetupMode()
-      basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
       let dataToSend=Buffer.fromHex("c1c1c1")
       serial.writeBuffer(dataToSend)
       rcvData = serial.readBuffer(6)
@@ -167,7 +165,6 @@ namespace E32LORA {
     //% weight=32
     export function e32reset () {
         setSetupMode()
-        basic.showNumber(pins.digitalReadPin(DigitalPin.P1))
         let dataToSend=Buffer.fromHex("c4c4c4")
         serial.writeBuffer(dataToSend)
         setNormalMode()
