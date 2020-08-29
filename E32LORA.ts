@@ -47,6 +47,9 @@ namespace E32LORA {
                 returnVal = letters[rest] + returnVal;
             }
         }
+        if (returnVal == "") {
+            returnVal = "0"
+        }
         return returnVal;
     }
 
