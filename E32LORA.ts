@@ -158,19 +158,6 @@ namespace E32LORA {
     }
 
 
-    /**
-     * e32reset
-     */
-    //% block
-    //% weight=32
-    export function e32reset () {
-        setSetupMode()
-        let dataToSend=Buffer.fromHex("c4c4c4")
-        serial.writeBuffer(dataToSend)
-        setNormalMode()
-    }
-
-
 // ==========================================================================
 // Advanced Export Functions
 // ==========================================================================
