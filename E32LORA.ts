@@ -130,7 +130,7 @@ namespace E32LORA {
       for (let idx = 0; idx <= recArray2.length - 1; idx++) {
           params = "" + params + ("" + decToHexString(recArray2[idx], 16) + " ")
       }
-      setNormalMode()
+//      setNormalMode()
       return params
     }
 
