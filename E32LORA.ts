@@ -89,6 +89,19 @@ namespace E32LORA {
 
 
     /**
+     * Registers code to run when the radio receives a string.
+     */
+    //% help=radio/on-received-string
+    //% block="on e32radio received" blockGap=16
+    //% useLoc="E32LORA.onDataPacketReceived" draggableParameters=reporter
+    export function onReceivedString(cb: (receivedString: string) => void) {
+        init();
+        onReceivedStringHandler = cb;
+    }
+
+
+
+    /**
      * e32SendString
      */
     //% block
