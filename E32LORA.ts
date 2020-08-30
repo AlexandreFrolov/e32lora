@@ -238,18 +238,18 @@ namespace E32LORA {
     /**
      * e32configNoSave
      */
-    //% block="E32LORA config (no save):|ADDR: %addr UARTBAUDRATE: %uartbaudrate AIRDATARATE: %airdatarate POWER: %pwr"
-    //% addr.defl="0000" uartbaudrate.defl=3 airdatarate.defl=2 pwr.defl=Power.p10dBm
-    export function e32configNoSave(addr: string, uartbaudrate: NumberFormat.UInt8LE, airdatarate: NumberFormat.UInt8LE, pwr: Power): string {
+    //% weight=32
+    //% block="E32LORA config (no save):|ADDR: %addr UARTBAUDRATE: %uartbaudrate | POWER: %pwr"
+    //% addr.defl="0000" uartbaudrate.defl=3 pwr.defl=Power.p10dBm
+    export function e32configNoSave(addr: string, uartbaudrate: NumberFormat.UInt8LE, pwr: Power): string {
 
-      let e32AirDataRate = 0x2;
       let e32Chan = 0xF;
       let e32TransmissionMode = 0;
       let e32Fec = 0x1;
       let e32Power = 0x3;
 
 
-      let byte3: string = decToHexString((uartbaudrate << 3) + airdatarate, 16);
+      let byte3: string = decToHexString((uartbaudrate << 3) + 2, 16);
 
       let cmdBuffer=Buffer.fromHex("c2" + addr + byte3)
 
