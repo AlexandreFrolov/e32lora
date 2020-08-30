@@ -25,18 +25,6 @@ namespace E32LORA {
     }
 
 
-    enum Power {
-        //% block="20dBm (100mW)"
-        p20dBm,
-        //% block="17dBm (50mW)"
-        p17dBm,
-        //% block="14dBm (25mW)"
-        p14dBm,
-        //% block="10dBm (10mW)"
-        p10dBm,
-    }
-
-
     let e32Pins = new E32PinConfig();
     let initialized = false;
 
@@ -228,6 +216,19 @@ namespace E32LORA {
       e32auxTimeout(100)
     }
 
+
+
+
+    enum Power {
+        //% block="20dBm (100mW)"
+        p20dBm,
+        //% block="17dBm (50mW)"
+        p17dBm,
+        //% block="14dBm (25mW)"
+        p14dBm,
+        //% block="10dBm (10mW)"
+        p10dBm,
+    }
 
     /**
      * power
