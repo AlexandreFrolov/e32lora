@@ -140,9 +140,9 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixed POWER: %pwr"
-    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixed.defl=false pwr.defl=Power.p20dBm
-    export function e32configNoSave(addr: string, channel: number, fixed: boolean, pwr: Power): string {
+    //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm POWER: %pwr"
+    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false pwr.defl=Power.p20dBm
+    export function e32configNoSave(addr: string, channel: number, fixedm: boolean, pwr: Power): string {
 
 //        let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
 //        let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
@@ -154,7 +154,7 @@ namespace E32LORA {
         let _power: NumberFormat.UInt8LE = parseInt(pwr);
         let byte5: NumberFormat.UInt8LE;
 
-        if(fixed == true) {
+        if(fixedm == true) {
             byte5 = 0xc4 + _power;
         }
         else {
