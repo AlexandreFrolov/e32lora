@@ -238,6 +238,7 @@ namespace E32LORA {
     //% weight=32
     export function power(pwr: Power) {
         basic.showNumber(pwr)
+        return pwr
     }
 
 
