@@ -10,6 +10,27 @@
     }
 
 
+
+    const enum UartBoud {
+        //% block="1.2K"
+        BaudRate1200 = "0",
+        //% block="2.4K"
+        BaudRate2400 = "1",
+        //% block="4.8K"
+        BaudRate4800 = "2",
+        //% block="9.6K"
+        BaudRate9600 = "3",
+        //% block="19.2K"
+        BaudRate19200 = "4",
+        //% block="38.4K"
+        BaudRate38400 = "5",
+        //% block="57.6K"
+        BaudRate57600 = "6",
+        //% block="115.2K"
+        BaudRate115200 = "7"
+    }
+
+
     const enum AirBoud {
         //% block="0.3K"
         BaudRate300 = "0",
@@ -122,10 +143,12 @@ namespace E32LORA {
      */
     //% weight=46
     //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud POWER: %pwr"
-    //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 pwr.defl=Power.p10dBm
-    export function e32configNoSave(addr: string, ubaud: BaudRate, airbaud: AirBoud, pwr: Power): string {
+    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 pwr.defl=Power.p10dBm
+    export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, pwr: Power): string {
 
-        let byte3: NumberFormat.UInt8LE = parseInt(airbaud);
+        let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
+        let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
+        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3) + _airbaud;
 
         let byte3String: string = decToHexString(byte3, 16);
 
