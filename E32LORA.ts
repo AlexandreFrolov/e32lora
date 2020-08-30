@@ -149,25 +149,22 @@ namespace E32LORA {
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
         let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
 
-        OLED.writeStringNewLine(decToHexString(_uartbaud, 16))
+//        OLED.writeStringNewLine(decToHexString(_uartbaud, 16))
         let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
-        OLED.writeStringNewLine(decToHexString(byte3, 16))
-
-//        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3) + _airbaud;
-
+//        OLED.writeStringNewLine(decToHexString(byte3, 16))
         let byte3String: string = decToHexString(byte3, 16);
 
 
-        let cmdBuffer=Buffer.fromHex("c2" + addr )
-        let params: string = "";
+        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String)
 
+        let params: string = "";
         let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
         for (let idx = 0; idx <= recArray.length - 1; idx++) {
             params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
         }
 
-//        return params
-        return "> " + byte3String
+        return params
+//        return "> " + byte3String
     }
 
 
