@@ -7,6 +7,16 @@ namespace E32LORA {
 
 //    const E32LORA_I2C_ADDR=0x68
 
+    enum Power {
+        //% block="20dBm (100mW)"
+        p20dBm,
+        //% block="17dBm (50mW)"
+        p17dBm,
+        //% block="14dBm (25mW)"
+        p14dBm,
+        //% block="10dBm (10mW)"
+        p10dBm
+    }
 
 
     function E32LORA_init() {
@@ -218,17 +228,6 @@ namespace E32LORA {
 
 
 
-
-    enum Power {
-        //% block="20dBm (100mW)"
-        p20dBm,
-        //% block="17dBm (50mW)"
-        p17dBm,
-        //% block="14dBm (25mW)"
-        p14dBm,
-        //% block="10dBm (10mW)"
-        p10dBm,
-    }
 
     /**
      * power
