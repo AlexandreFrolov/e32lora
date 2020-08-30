@@ -157,9 +157,9 @@ namespace E32LORA {
         else {
             byte5 = 0x44 + _power;
         }
-//        let byte5String: string = decToHexString(byte5, 16);
+        let byte5String: string = decToHexString(byte5, 16);
 
-        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String)
+        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String + byte5String)
         return buffer2string(cmdBuffer);
 /*
         let params: string = "";
@@ -175,7 +175,7 @@ namespace E32LORA {
 
     function buffer2string(buf: Buffer): string {
         let str: string = "";
-        let recArray=buf.toArray(NumberFormat.UInt8LE)
+        let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
         for (let idx = 0; idx <= recArray.length - 1; idx++) {
             str = str + (decToHexString(recArray[idx], 16) + " ")
         }
