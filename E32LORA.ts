@@ -152,13 +152,15 @@ namespace E32LORA {
         let _power: NumberFormat.UInt8LE = parseInt(pwr);
         let byte5: NumberFormat.UInt8LE;
         let byte5String: string = "";
+
+/*
         if(fixed == true) {
           byte5String = decToHexString(0xc4 + _power, 16);
         }
         else {
           byte5String = decToHexString(0x44 + _power, 16);
         }
-
+*/
         let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String)
 
         let params: string = "";
