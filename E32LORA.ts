@@ -10,7 +10,7 @@
         //% block="10dBm (10mW)"
         p10dBm = "3"
     }
-
+*/
     const enum UartBoud {
         //% block="1.2K"
         BaudRate1200 = "0",
@@ -44,7 +44,7 @@
         //% block="19.2K"
         BaudRate19200 = "5"
     }
-*/
+
 
 
 
@@ -141,14 +141,15 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm POWER: %pwr"
-    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false pwr.defl=0 pwr.min=0 pwr.max=3
+    //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm POWER: %pwr UART BOUD: %boud"
+    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false pwr.defl=0 pwr.min=0 pwr.max=3 boud.defl=UartBoud.BaudRate9600
     export function e32configNoSave(addr: string, channel: number, fixedm: boolean, pwr: number): string {
 
-//        let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
+        let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
+        let _airbaud: NumberFormat.UInt8LE = parseInt("2");
 //        let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
-//        let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
-//        let byte3String: string = decToHexString(byte3, 16);
+        let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
+        let byte3String: string = decToHexString(byte3, 16);
 
         let byte4String: string = decToHexString(channel & 0x1f, 16);
 
