@@ -157,7 +157,7 @@ namespace E32LORA {
         else {
             byte5 = 0x44;
         }
-        let byte5String: string = byte5String = decToHexString(byte5 + _power, 16);
+        let byte5String: string = decToHexString(byte5 + _power, 16);
 
         let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String + byte5String)
 
