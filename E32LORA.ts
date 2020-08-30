@@ -12,17 +12,17 @@
 
     const enum AirBoud {
         //% block="0.3K"
-        BaudRate300 = 0,
+        BaudRate300 = "0",
         //% block="1.2K"
-        BaudRate1200 = 1,
+        BaudRate1200 = "1",
         //% block="2.4K"
-        BaudRate2400 = 2,
+        BaudRate2400 = "2",
         //% block="4.8K"
-        BaudRate4800 = 3,
+        BaudRate4800 = "3",
         //% block="9.6K"
-        BaudRate9600 = 4,
+        BaudRate9600 = "4",
         //% block="19.2K"
-        BaudRate19200 = 5
+        BaudRate19200 = "5"
     }
 
 
@@ -125,7 +125,7 @@ namespace E32LORA {
     //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, ubaud: BaudRate, airbaud: AirBoud, pwr: Power): string {
 
-        let byte3: NumberFormat.UInt8LE = airbaud;
+        let byte3: NumberFormat.UInt8LE = parseInt(airbaud);
 
         let byte3String: string = decToHexString(byte3, 16);
 
