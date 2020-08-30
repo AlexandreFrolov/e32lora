@@ -10,6 +10,22 @@
     }
 
 
+    enum AirBoud {
+        //% block="0.3K"
+        BaudRate300,
+        //% block="1.2K"
+        BaudRate1200,
+        //% block="2.4K"
+        BaudRate2400,
+        //% block="4.8K"
+        BaudRate4800,
+        //% block="9.6K"
+        BaudRate9600,
+        //% block="19.2K"
+        BaudRate19200
+    }
+
+
 
 
 /**
@@ -105,9 +121,9 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud  AIR BAUD: %airbaud |POWER: %pwr"
-    //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 airbaud.defl=BaudRate.BaudRate2400 pwr.defl=Power.p10dBm
-    export function e32configNoSave(addr: string, ubaud: BaudRate, airbaud: BaudRate, pwr: Power): string {
+    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud POWER: %pwr"
+    //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 pwr.defl=Power.p10dBm
+    export function e32configNoSave(addr: string, ubaud: BaudRate, airbaud: AirBoud, pwr: Power): string {
 
         let cmdBuffer=Buffer.fromHex("c2" + addr)
         let params: string = "";
