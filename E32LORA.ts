@@ -150,7 +150,7 @@ namespace E32LORA {
         let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
 
         OLED.writeStringNewLine(decToHexString(_uartbaud, 16))
-        let byte3: NumberFormat.UInt8LE = (_uartbaud << 1);
+        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3);
         OLED.writeStringNewLine(decToHexString(byte3, 16))
 
 //        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3) + _airbaud;
@@ -167,7 +167,7 @@ namespace E32LORA {
         }
 
 //        return params
-        return "> " + byte3
+        return "> " + byte3String
     }
 
 
