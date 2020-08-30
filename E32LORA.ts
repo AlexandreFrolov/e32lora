@@ -12,17 +12,17 @@
 
     enum AirBoud {
         //% block="0.3K"
-        BaudRate300 = 0,
+        BaudRate300 : 0,
         //% block="1.2K"
-        BaudRate1200 = 1,
+        BaudRate1200 : 1,
         //% block="2.4K"
-        BaudRate2400 = 2,
+        BaudRate2400 : 2,
         //% block="4.8K"
-        BaudRate4800 = 3,
+        BaudRate4800 : 3,
         //% block="9.6K"
-        BaudRate9600 = 4,
+        BaudRate9600 : 4,
         //% block="19.2K"
-        BaudRate19200 = 5
+        BaudRate19200 : 5
     }
 
 
