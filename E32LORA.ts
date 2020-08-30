@@ -125,7 +125,7 @@ namespace E32LORA {
     //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, ubaud: BaudRate, airbaud: AirBoud, pwr: Power): string {
 
-//        let byte3: string = decToHexString((ubaud << 3) + airbaud, 16);
+        let byte3: string = decToHexString((ubaud << 3) + airbaud, 16);
 
 
         let cmdBuffer=Buffer.fromHex("c2" + addr )
