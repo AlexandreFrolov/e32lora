@@ -235,11 +235,13 @@ namespace E32LORA {
 
 
 
+
+
     /**
      * e32configNoSave
      */
-    //% weight=32
-    //% block="E32LORA config (no save):|ADDR: %addr UARTBAUDRATE: %uartbaudrate | POWER: %pwr"
+    //% weight=46
+    //% block="E32LORA config no save:|ADDR: %addr UARTBAUDRATE: %uartbaudrate|POWER: %pwr"
     //% addr.defl="0000" uartbaudrate.defl=3 pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, uartbaudrate: NumberFormat.UInt8LE, pwr: Power): string {
 
