@@ -148,7 +148,10 @@ namespace E32LORA {
 
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
         let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
-        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3) + _airbaud;
+
+        let byte3: NumberFormat.UInt8LE = _uartbaud;
+
+//        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3) + _airbaud;
 
         let byte3String: string = decToHexString(byte3, 16);
 
