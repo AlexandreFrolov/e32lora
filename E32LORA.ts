@@ -140,7 +140,7 @@ namespace E32LORA {
      */
     //% weight=46
     //% block="E32LORA module config: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud CHANNEL: %channel FIXED: %fixed POWER: %pwr SAVE CONFIG: %save"
-    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 channel.min=0 channel.max=31 channel.defl=15 fixed.defl=false pwr.defl=Power.p10dBm save.defl=false
+    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 channel.min=0 channel.max=31 channel.defl=15 fixed.defl=false pwr.defl=Power.p20dBm save.defl=false
     export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, channel: number, fixed: boolean, pwr: Power, save: boolean): string {
 
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
