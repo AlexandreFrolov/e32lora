@@ -238,7 +238,7 @@ namespace E32LORA {
     /**
      * e32configNoSave
      */
-    //% block="E32LORA config (no save):|ADDR: %addr UARTBaudRate: %uartbaudrate AIRDataRate: %airdatarate |POWER: %pwr"
+    //% block="E32LORA config (no save):|ADDR: %addr UARTBAUDRATE: %uartbaudrate AIRDATARATE: %airdatarate POWER: %pwr"
     //% addr.defl="0000" uartbaudrate.defl=3 airdatarate.defl=2 pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, uartbaudrate: NumberFormat.UInt8LE, airdatarate: NumberFormat.UInt8LE, pwr: Power): string {
 
