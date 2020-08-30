@@ -237,6 +237,14 @@ namespace E32LORA {
     //% block="E32LORA config (no save):|ADDR: %addr |POWER: %pwr"
     //% addr.defl="0000" pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, pwr: Power) {
+      let e32Addr = addr;
+      let e32UartBaudRate = 0x3;
+      let e32AirDataRate = 0x2;
+      let e32Chan = 0xF;
+      let e32TransmissionMode = 0;
+      let e32Fec = 0x1;
+      let e32Power = 0x3;
+
       let cmd: string = hexString(pwr)
 //        basic.showNumber(pwr)
         return cmd
