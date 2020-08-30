@@ -108,6 +108,7 @@ namespace E32LORA {
     //% block="E32LORA config no save:|ADDR: %addr |POWER: %pwr"
     //% addr.defl="0000" pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, pwr: Power): string {
+        let params: string = addr;
         return params
     }
 
