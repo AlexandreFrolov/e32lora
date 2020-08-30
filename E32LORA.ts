@@ -1,3 +1,5 @@
+
+/*
     enum Power {
         //% block="20dBm (100mW)"
         p20dBm = "0",
@@ -9,7 +11,6 @@
         p10dBm = "3"
     }
 
-/*
     const enum UartBoud {
         //% block="1.2K"
         BaudRate1200 = "0",
@@ -141,8 +142,8 @@ namespace E32LORA {
      */
     //% weight=46
     //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm POWER: %pwr"
-    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false pwr.defl=Power.p20dBm
-    export function e32configNoSave(addr: string, channel: number, fixedm: boolean, pwr: Power): string {
+    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false pwr.defl=0 pwr.min=0 pwr.max=3
+    export function e32configNoSave(addr: string, channel: number, fixedm: boolean, pwr: number): string {
 
 //        let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
 //        let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
@@ -151,17 +152,16 @@ namespace E32LORA {
 
         let byte4String: string = decToHexString(channel & 0x1f, 16);
 
-//        let _power: NumberFormat.UInt8LE = parseInt(pwr);
+        let _power: NumberFormat.UInt8LE = pwr;
+
         let byte5: NumberFormat.UInt8LE;
-/*
         if(fixedm == true) {
             byte5 = 0xc4 + _power;
         }
         else {
             byte5 = 0x44 + _power;
         }
-*/
-       byte5 = 0x44 + parseInt(Power.p20dBm);
+//       byte5 = 0x44 + pwr;
        let byte5String  = decToHexString(byte5, 16);
 
         let cmdBuffer=Buffer.fromHex("c2" + addr + "1a" + byte4String + byte5String)
