@@ -159,7 +159,7 @@ namespace E32LORA {
           byte5String = decToHexString(0x44 + _power, 16);
         }
 
-        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String + byte5String)
+        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String)
 
         let params: string = "";
         let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
