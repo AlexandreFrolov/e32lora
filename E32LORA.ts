@@ -175,7 +175,7 @@ namespace E32LORA {
 
     function buffer2string(buf: Buffer): string {
         let str: string = "";
-        let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
+        let recArray=buf.toArray(NumberFormat.UInt8LE)
         for (let idx = 0; idx <= recArray.length - 1; idx++) {
             str = str + (decToHexString(recArray[idx], 16) + " ")
         }
