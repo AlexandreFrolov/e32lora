@@ -105,9 +105,9 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud|POWER: %pwr"
-    //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 pwr.defl=Power.p10dBm
-    export function e32configNoSave(addr: string, ubaud: BaudRate, pwr: Power): string {
+    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud  AIR BAUD: %airbaud |POWER: %pwr"
+    //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 airbaud.defl=BaudRate.BaudRate2400 pwr.defl=Power.p10dBm
+    export function e32configNoSave(addr: string, ubaud: BaudRate, airbaud: BaudRate, pwr: Power): string {
 
         let cmdBuffer=Buffer.fromHex("c2" + addr)
         let params: string = "";
