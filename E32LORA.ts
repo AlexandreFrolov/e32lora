@@ -147,7 +147,8 @@ namespace E32LORA {
 //        let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
 //        let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
 //        let byte3String: string = decToHexString(byte3, 16);
-//        let byte4String: string = decToHexString(channel & 0x1f, 16);
+
+        let byte4String: string = decToHexString(channel & 0x1f, 16);
 
         let _power: NumberFormat.UInt8LE = parseInt(pwr);
         let byte5: NumberFormat.UInt8LE;
