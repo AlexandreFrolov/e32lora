@@ -103,7 +103,8 @@ namespace E32LORA {
      * https://stackoverflow.com/questions/50967455/from-decimal-to-hexadecimal-without-tostring
      */
     function decToHexString(int: number, base: number): string {
-        let letters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+//        let letters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+        let letters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
         let returnVal = "";
         if (base > 1 && base < 37) {
             while (int != 0) {
@@ -118,7 +119,6 @@ namespace E32LORA {
         if (returnVal.length == 1) {
             returnVal = "0" + returnVal
         }
-
         return returnVal;
     }
 
@@ -153,15 +153,15 @@ namespace E32LORA {
 
         let _power: NumberFormat.UInt8LE = parseInt(pwr);
         let byte5: NumberFormat.UInt8LE;
-
+/*
         if(fixed == true) {
             byte5 = 0xc4 + _power;
         }
         else {
             byte5 = 0x44 + _power;
         }
-
-//       byte5 = 0x44;
+*/
+       byte5 = 0x44;
        let byte5String  = decToHexString(byte5, 16);
 
         let cmdBuffer=Buffer.fromHex("c2" + addr + "1a" + byte4String + byte5String)
