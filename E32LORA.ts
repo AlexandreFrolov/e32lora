@@ -151,7 +151,7 @@ namespace E32LORA {
 
         let byte4String: string = decToHexString(channel & 0x1f, 16);
 
-        let _power: NumberFormat.UInt8LE = parseInt(pwr);
+//        let _power: NumberFormat.UInt8LE = parseInt(pwr);
         let byte5: NumberFormat.UInt8LE;
 /*
         if(fixedm == true) {
@@ -161,7 +161,7 @@ namespace E32LORA {
             byte5 = 0x44 + _power;
         }
 */
-       byte5 = 0x44;
+       byte5 = 0x44 + parseInt(pwr);
        let byte5String  = decToHexString(byte5, 16);
 
         let cmdBuffer=Buffer.fromHex("c2" + addr + "1a" + byte4String + byte5String)
