@@ -136,7 +136,8 @@ namespace E32LORA {
             params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
         }
 
-        return params
+//        return params
+        return "> " + byte3
     }
 
 
