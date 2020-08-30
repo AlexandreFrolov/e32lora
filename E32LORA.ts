@@ -105,7 +105,7 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA config no save:|ADDR: %addr UARTBAUD: %ubaud|POWER: %pwr"
+    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud|POWER: %pwr"
     //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, ubaud: BaudRate, pwr: Power): string {
 
