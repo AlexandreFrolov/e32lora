@@ -139,9 +139,9 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA module config: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud CHANNEL: %channel FIXED: %fixed POWER: %pwr SAVE CONFIG: %save"
-    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 channel.min=0 channel.max=31 channel.defl=15 fixed.defl=false pwr.defl=Power.p20dBm save.defl=false
-    export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, channel: number, fixed: boolean, pwr: Power, save: boolean): string {
+    //% block="E32LORA module config: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud CHANNEL: %channel FIXED: %fixed POWER: %pwr"
+    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 channel.min=0 channel.max=31 channel.defl=15 fixed.defl=false pwr.defl=Power.p20dBm
+    export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, channel: number, fixed: boolean, pwr: Power): string {
 
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
         let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
@@ -159,16 +159,8 @@ namespace E32LORA {
         }
 //        let byte5String: string = decToHexString(byte5, 16);
 
-        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String + decToHexString(byte5, 16))
+        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String)
         return buffer2string(cmdBuffer);
-/*
-        let params: string = "";
-        let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
-        for (let idx = 0; idx <= recArray.length - 1; idx++) {
-            params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
-        }
-        return params
-*/
     }
 
 
