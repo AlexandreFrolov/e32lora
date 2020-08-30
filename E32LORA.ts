@@ -151,7 +151,7 @@ namespace E32LORA {
         let byte4String: string = decToHexString(channel & 0x1f, 16);
 
         let _power: NumberFormat.UInt8LE = parseInt(pwr);
-//        let byte5: NumberFormat.UInt8LE;
+        let byte5: NumberFormat.UInt8LE;
 /*
         if(fixed == true) {
             byte5 = 0xc4 + _power;
