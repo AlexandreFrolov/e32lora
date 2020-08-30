@@ -142,16 +142,13 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud CHANNEL: %channel POWER: %pwr"
-    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 channel.min=0 channel.max=31 channel.defl=15 pwr.defl=Power.p10dBm
-    export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, channel: number, pwr: Power): string {
+    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud CHANNEL: %channel FIXED: %fixed POWER: %pwr"
+    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 channel.min=0 channel.max=31 channel.defl=15 fixed.defl=false pwr.defl=Power.p10dBm
+    export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, channel: number, fixed: boolean, pwr: Power): string {
 
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
         let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
-
-//        OLED.writeStringNewLine(decToHexString(_uartbaud, 16))
         let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
-//        OLED.writeStringNewLine(decToHexString(byte3, 16))
         let byte3String: string = decToHexString(byte3, 16);
         let byte4String: string = decToHexString(channel & 0x1f, 16);
 
@@ -163,9 +160,7 @@ namespace E32LORA {
         for (let idx = 0; idx <= recArray.length - 1; idx++) {
             params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
         }
-
         return params
-//        return "> " + byte3String
     }
 
 
