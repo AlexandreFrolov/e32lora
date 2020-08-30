@@ -141,13 +141,13 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm POWER: %pwr UART BOUD: %baud"
-    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false pwr.defl=0 pwr.min=0 pwr.max=3 ubaud.defl=UartBaud.BaudRate9600
-    export function e32configNoSave(addr: string, channel: number, fixedm: boolean, pwr: number, ubaud: UartBaud): string {
+    //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm POWER: %pwr UART BAUD: %ubaud AIR BAUD: %airbaud"
+    //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false pwr.defl=0 pwr.min=0 pwr.max=3 ubaud.defl=UartBaud.BaudRate9600 airbaud.defl=AirBaud.BaudRate2400
+    export function e32configNoSave(addr: string, channel: number, fixedm: boolean, pwr: number, ubaud: UartBaud, airbaud: AirBaud): string {
 
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
-        let _airbaud: NumberFormat.UInt8LE = parseInt("2");
-//        let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
+//        let _airbaud: NumberFormat.UInt8LE = parseInt("2");
+        let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
         let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
         let byte3String: string = decToHexString(byte3, 16);
 
