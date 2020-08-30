@@ -241,7 +241,7 @@ namespace E32LORA {
     //% block="E32LORA config (no save):|ADDR: %addr |POWER: %pwr"
     //% addr.defl="0000" pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, pwr: Power): string {
-      let e32Addr = addr;
+
       let e32UartBaudRate = 0x3;
       let e32AirDataRate = 0x2;
       let e32Chan = 0xF;
@@ -250,10 +250,9 @@ namespace E32LORA {
       let e32Power = 0x3;
 
 
-      let cmdArray: NumberFormat.UInt8LE[] = [];
-      cmdArray[0] = 0x01
-      cmdArray[1] = 0x02
-      let cmdBuffer = Buffer.fromArray(cmdArray);
+      let cmdBuffer=Buffer.fromHex("c2" + addr)
+
+
 
       let params: string = "";
       let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
