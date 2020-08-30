@@ -80,6 +80,10 @@ namespace E32LORA {
         if (returnVal == "") {
             returnVal = "0"
         }
+        if (returnVal.length == 1) {
+            returnVal = "0" + returnVal
+        }
+
         return returnVal;
     }
 
