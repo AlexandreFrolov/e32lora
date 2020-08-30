@@ -1,15 +1,13 @@
     enum Power {
         //% block="20dBm (100mW)"
-        p20dBm,
+        p20dBm = "0",
         //% block="17dBm (50mW)"
-        p17dBm,
+        p17dBm = "1",
         //% block="14dBm (25mW)"
-        p14dBm,
+        p14dBm = "2",
         //% block="10dBm (10mW)"
-        p10dBm
+        p10dBm = "3"
     }
-
-
 
     const enum UartBoud {
         //% block="1.2K"
@@ -29,7 +27,6 @@
         //% block="115.2K"
         BaudRate115200 = "7"
     }
-
 
     const enum AirBoud {
         //% block="0.3K"
@@ -142,7 +139,7 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA config: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud CHANNEL: %channel FIXED: %fixed POWER: %pwr SAVE CONFIG: %save"
+    //% block="E32LORA module config: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud CHANNEL: %channel FIXED: %fixed POWER: %pwr SAVE CONFIG: %save"
     //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 channel.min=0 channel.max=31 channel.defl=15 fixed.defl=false pwr.defl=Power.p10dBm save.defl=false
     export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, channel: number, fixed: boolean, pwr: Power, save: boolean): string {
 
@@ -152,8 +149,17 @@ namespace E32LORA {
         let byte3String: string = decToHexString(byte3, 16);
         let byte4String: string = decToHexString(channel & 0x1f, 16);
 
+        let _power: NumberFormat.UInt8LE = parseInt(pwr);
+        let byte5: NumberFormat.UInt8LE;
+        let byte5String: string = "";
+        if(fixed == true) {
+          byte5String = decToHexString(0xc4 + _power, 16);
+        }
+        else {
+          byte5String = decToHexString(0x44 + _power, 16);
+        }
 
-        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String)
+        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String + byte5String)
 
         let params: string = "";
         let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
