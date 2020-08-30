@@ -232,11 +232,11 @@ namespace E32LORA {
 
 
     /**
-     * power
+     * e32configNoSave
      */
-    //% block
-    //% weight=32
-    export function power(pwr: Power) {
+    //% block="E32LORA config (no save):|ADDR: %addr |POWER: %pwr"
+    //% addr.defl="0000" pwr.defl=Power.p10dBm
+    export function e32configNoSave(addr: string, pwr: Power) {
 //        basic.showNumber(pwr)
         return pwr
     }
