@@ -1,12 +1,3 @@
-
-/**
- * E32LORA block
- */
-//% weight=100 color=#00cc00 icon="\uf012" block="E32LORA"
-namespace E32LORA {
-
-//    const E32LORA_I2C_ADDR=0x68
-
     enum Power {
         //% block="20dBm (100mW)"
         p20dBm,
@@ -17,6 +8,17 @@ namespace E32LORA {
         //% block="10dBm (10mW)"
         p10dBm
     }
+
+
+
+
+/**
+ * E32LORA block
+ */
+//% weight=100 color=#00cc00 icon="\uf012" block="E32LORA"
+namespace E32LORA {
+
+//    const E32LORA_I2C_ADDR=0x68
 
 
     function E32LORA_init() {
