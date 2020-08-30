@@ -160,15 +160,27 @@ namespace E32LORA {
 //        let byte5String: string = decToHexString(byte5, 16);
 
         let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String)
-
+        return buffer2string(cmdBuffer);
+/*
         let params: string = "";
         let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
         for (let idx = 0; idx <= recArray.length - 1; idx++) {
             params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
         }
         return params
+*/
     }
 
+
+
+    function buffer2string(buf: Buffer): string {
+        let str: string = "";
+        let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
+        for (let idx = 0; idx <= recArray.length - 1; idx++) {
+            str = str + (decToHexString(recArray[idx], 16) + " ")
+        }
+      return str;
+    }
 
 
     /**
