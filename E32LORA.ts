@@ -234,43 +234,6 @@ namespace E32LORA {
 
 
 
-
-
-
-    /**
-     * e32configNoSave
-     */
-    //% weight=46
-    //% block="E32LORA config no save:|ADDR: %addr UARTBAUDRATE: %uartbaudrate|POWER: %pwr"
-    //% addr.defl="0000" uartbaudrate.defl=3 pwr.defl=Power.p10dBm
-    export function e32configNoSave(addr: string, uartbaudrate: NumberFormat.UInt8LE, pwr: Power): string {
-
-      let e32Chan = 0xF;
-      let e32TransmissionMode = 0;
-      let e32Fec = 0x1;
-      let e32Power = 0x3;
-
-
-      let byte3: string = decToHexString((uartbaudrate << 3) + 2, 16);
-
-      let cmdBuffer=Buffer.fromHex("c2" + addr + byte3)
-
-
-
-      let params: string = "";
-      let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
-      for (let idx = 0; idx <= recArray.length - 1; idx++) {
-          params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
-      }
-
-
-
-//      let cmd: string = hexString(pwr)
-//        basic.showNumber(pwr)
-        return params
-    }
-
-
 // ==========================================================================
 // Internal Functions
 // ==========================================================================
