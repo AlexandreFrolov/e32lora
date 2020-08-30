@@ -153,9 +153,10 @@ namespace E32LORA {
         let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
 //        OLED.writeStringNewLine(decToHexString(byte3, 16))
         let byte3String: string = decToHexString(byte3, 16);
+        let byte4String: string = decToHexString(channel & 0x1f, 16);
 
 
-        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String)
+        let cmdBuffer=Buffer.fromHex("c2" + addr + byte3String + byte4String)
 
         let params: string = "";
         let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
