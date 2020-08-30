@@ -105,8 +105,8 @@ namespace E32LORA {
      * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA config no save:|ADDR: %addr BAUD: %ubaud|POWER: %pwr"
-    //% addr.defl="0000" baud.defl=BaudRate.BaudRate9600 pwr.defl=Power.p10dBm
+    //% block="E32LORA config no save:|ADDR: %addr UARTBAUD: %ubaud|POWER: %pwr"
+    //% addr.defl="0000" ubaud.defl=BaudRate.BaudRate9600 pwr.defl=Power.p10dBm
     export function e32configNoSave(addr: string, ubaud: BaudRate, pwr: Power): string {
 
         let cmdBuffer=Buffer.fromHex("c2" + addr)
