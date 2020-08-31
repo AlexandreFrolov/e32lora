@@ -87,6 +87,8 @@ namespace E32LORA {
     E32LORA_init()
 //    setStatus(0x08)
 
+
+/*
     let onReceivedStringHandler: (receivedString: string) => void;
 
     serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
@@ -97,7 +99,7 @@ namespace E32LORA {
     //    basic.showIcon(IconNames.Yes)
     })
 
-
+*/
 
     /**
      * decToHexString
