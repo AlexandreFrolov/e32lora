@@ -190,8 +190,7 @@ namespace E32LORA {
     }
 
 
-    function errorHalt(errno: number)
-    {
+    function errorHalt(errno: number) {
         while (true) {
           basic.showIcon(IconNames.Sad);
           basic.showString("E32:" + convertToText(errno));
