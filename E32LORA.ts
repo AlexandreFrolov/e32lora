@@ -145,6 +145,9 @@ namespace E32LORA {
     //% addr.defl="0000" channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false ubaud.defl=UartBaud.BaudRate9600 airbaud.defl=AirBaud.BaudRate2400 pwr.defl=0 pwr.min=0 pwr.max=3 save.defl=false
     export function e32config(addr: string, channel: number, fixedm: boolean, ubaud: UartBaud, airbaud: AirBaud, pwr: number, save: boolean): string {
 
+        let addrString: string = decToHexString(0, 16);
+
+
         let byte1: NumberFormat.UInt8LE = 0;
         if(save == true) {
             byte1 = 0xc0;
