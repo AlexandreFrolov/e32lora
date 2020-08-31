@@ -146,7 +146,7 @@ namespace E32LORA {
     export function e32config(addr: number, channel: number, fixedm: boolean, ubaud: UartBaud, airbaud: AirBaud, pwr: number, save: boolean): string {
 
         let addrString: string = "";
-        if(addr <= 255) {
+        if(addr > 0 && addr <= 255) {
           addrString = "00" + decToHexString(addr, 16);
         }
         else if (addr <= 65535) {
