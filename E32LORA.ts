@@ -155,8 +155,7 @@ namespace E32LORA {
           addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
         }
         else {
-          trace(1);
-          addrString = "0000";
+          errorHalt(1);
         }
 
         let byte1: NumberFormat.UInt8LE = 0;
@@ -191,11 +190,11 @@ namespace E32LORA {
     }
 
 
-    function trace(errno: number)
+    function errorHalt(errno: number)
     {
-        for (let index = 0; index < 4; index++) {
+        while (true) {
           basic.showIcon(IconNames.Sad);
-          basic.showString("e32:" + convertToText(errno));
+          basic.showString("E32:" + convertToText(errno));
         }
     }
 
