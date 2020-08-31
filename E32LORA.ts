@@ -149,7 +149,7 @@ namespace E32LORA {
         if(addr < 0 || addr > 65535) {
           errorHalt(11);
         }
-        if(channel < 0 || channel > 32) {
+        if(channel < 0 || channel > 31) {
           errorHalt(12);
         }
         if(pwr < 0 || pwr > 3) {
