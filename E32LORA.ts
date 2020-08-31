@@ -146,16 +146,17 @@ namespace E32LORA {
     export function e32config(addr: number, channel: number, fixedm: boolean, ubaud: UartBaud, airbaud: AirBaud, pwr: number, save: boolean): string {
 
         let addrString: string = "";
-        if(addr > 0 && addr <= 255) {
+        if(addr < 0 || addr > 65535) {
+          errorHalt(1);
+        }
+
+        if(addr <= 255) {
           addrString = "00" + decToHexString(addr, 16);
         }
         else if (addr <= 65535) {
           let lo: NumberFormat.UInt8LE = addr & 0xff;
           let hi: NumberFormat.UInt8LE = (addr & 0xff00) >> 8;
           addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
-        }
-        else {
-          errorHalt(1);
         }
 
         let byte1: NumberFormat.UInt8LE = 0;
