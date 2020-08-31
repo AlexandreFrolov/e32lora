@@ -147,8 +147,15 @@ namespace E32LORA {
 
         let addrString: string = "";
         if(addr < 0 || addr > 65535) {
-          errorHalt(1);
+          errorHalt(11);
         }
+        if(channel < 0 || channel > 32) {
+          errorHalt(12);
+        }
+        if(pwr < 0 || pwr > 3) {
+          errorHalt(13);
+        }
+
 
         if(addr <= 255) {
           addrString = "00" + decToHexString(addr, 16);
