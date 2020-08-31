@@ -149,10 +149,15 @@ namespace E32LORA {
         if(addr <= 255) {
           addrString = "00" + decToHexString(addr, 16);
         }
-        else {
+        else if (addr <= 65535) {
           let lo: NumberFormat.UInt8LE = addr & 0xff;
           let hi: NumberFormat.UInt8LE = (addr & 0xff00) >> 8;
           addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
+        }
+        else {
+          basic.showIcon(IconNames.Sad);
+          basic.showString("e32config: addr > 65535");
+          return "";
         }
 
         let byte1: NumberFormat.UInt8LE = 0;
