@@ -193,8 +193,10 @@ namespace E32LORA {
 
     function trace(errno: number)
     {
-        basic.showIcon(IconNames.Sad);
-        basic.showString("e32:" + convertToText(errno));
+        for (let index = 0; index < 4; index++) {
+          basic.showIcon(IconNames.Sad);
+          basic.showString("e32:" + convertToText(errno));
+        }
     }
 
 
