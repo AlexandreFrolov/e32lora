@@ -150,7 +150,7 @@ namespace E32LORA {
              addrString = "00" + decToHexString(addr, 16);
         }
         else {
-             addrString = "0000" ;
+             addrString = "0000";
         }
 
 
