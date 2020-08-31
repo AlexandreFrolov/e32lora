@@ -11,6 +11,7 @@
         p10dBm = "3"
     }
 */
+/*
     const enum UartBaud {
         //% block="1.2K"
         BaudRate1200 = "0",
@@ -45,7 +46,7 @@
         BaudRate19200 = "5"
     }
 
-
+*/
 
 
 /**
