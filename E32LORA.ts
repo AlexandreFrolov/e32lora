@@ -143,6 +143,7 @@ namespace E32LORA {
     //% weight=46
     //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm UART BAUD: %ubaud AIR BAUD: %airbaud POWER: %pwr SAVE CONFIG: %save"
     //% addr.defl=0 addr.min=0 addr.max=65535 channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false ubaud.defl=UartBaud.BaudRate9600 airbaud.defl=AirBaud.BaudRate2400 pwr.defl=0 pwr.min=0 pwr.max=3 save.defl=false
+/*
     export function e32config(addr: number, channel: number, fixedm: boolean, ubaud: UartBaud, airbaud: AirBaud, pwr: number, save: boolean): string {
 
         // Parameters check. Halt if errors found.
@@ -197,15 +198,16 @@ namespace E32LORA {
         let byte5String  = decToHexString(byte5, 16);
         let cmdBuffer=Buffer.fromHex(byte1String + addrString + "1a" + byte4String + byte5String)
 
-/*
-        setSetupMode()
-        e32auxTimeout(100)
-        serial.writeBuffer(cmdBuffer)
-        setNormalMode()
-        e32auxTimeout(100)
-*/
+//        setSetupMode()
+//        e32auxTimeout(100)
+//        serial.writeBuffer(cmdBuffer)
+//        setNormalMode()
+//        e32auxTimeout(100)
+
         return buffer2string(cmdBuffer);
     }
+*/
+
 
     /**
      * errorHalt
