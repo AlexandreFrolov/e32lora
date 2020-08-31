@@ -155,8 +155,7 @@ namespace E32LORA {
           addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
         }
         else {
-          basic.showIcon(IconNames.Sad);
-          basic.showString("e32config: addr > 65535");
+          trace(1);
           return "";
         }
 
@@ -189,6 +188,13 @@ namespace E32LORA {
         let cmdBuffer=Buffer.fromHex(byte1String + addrString + "1a" + byte4String + byte5String)
 //        let cmdBuffer=Buffer.fromHex("c2" + addr + "1a" + byte4String + byte5String)
         return buffer2string(cmdBuffer);
+    }
+
+
+    function trace(errno: number)
+    {
+        basic.showIcon(IconNames.Sad);
+        basic.showString("e32:" + convertToText(errno));
     }
 
 
