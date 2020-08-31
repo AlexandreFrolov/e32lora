@@ -189,15 +189,20 @@ namespace E32LORA {
         return buffer2string(cmdBuffer);
     }
 
-
+    /**
+     * errorHalt
+    */
     function errorHalt(errno: number) {
         while (true) {
           basic.showIcon(IconNames.Sad);
+          basic.pause(2000)
           basic.showString("E32:" + convertToText(errno));
         }
     }
 
-
+    /**
+     * buffer2string
+    */
     function buffer2string(buf: Buffer): string {
         let str: string = "";
         let recArray=buf.toArray(NumberFormat.UInt8LE)
