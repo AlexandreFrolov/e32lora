@@ -145,6 +145,7 @@ namespace E32LORA {
     //% addr.defl=0 addr.min=0 addr.max=65535 channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false ubaud.defl=UartBaud.BaudRate9600 airbaud.defl=AirBaud.BaudRate2400 pwr.defl=0 pwr.min=0 pwr.max=3 save.defl=false
     export function e32config(addr: number, channel: number, fixedm: boolean, ubaud: UartBaud, airbaud: AirBaud, pwr: number, save: boolean): string {
 
+        // Parameters check. Halt if errors found.
         let addrString: string = "";
         if(addr < 0 || addr > 65535) {
           errorHalt(11);
@@ -155,7 +156,6 @@ namespace E32LORA {
         if(pwr < 0 || pwr > 3) {
           errorHalt(13);
         }
-
 
         if(addr <= 255) {
           addrString = "00" + decToHexString(addr, 16);
@@ -168,22 +168,26 @@ namespace E32LORA {
 
         let byte1: NumberFormat.UInt8LE = 0;
         if(save == true) {
-          byte1 = 0xc0;
+          byte1 = 0xc0; // Save the parameters when power down
         }
         else {
-          byte1 = 0xc2;
+          byte1 = 0xc2; // Do not save the parameters when power down
         }
         let byte1String: string = decToHexString(byte1, 16);
 
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
         let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
-        let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f;
+        let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f; // UART mode protection: 8N1 only available
         let byte3String: string = decToHexString(byte3, 16);
 
-        let byte4String: string = decToHexString(channel & 0x1f, 16);
+        let byte4String: string = decToHexString(channel & 0x1f, 16); // 0x00...0x1f
 
         let _power: NumberFormat.UInt8LE = pwr;
         let byte5: NumberFormat.UInt8LE;
+
+        // Set wireless wake-up time to default (250mc)
+        // Set TXD and AUX push-pull outputs to default (internal pull-up resistor)
+        // Turn on FEC (default)
         if(fixedm == true) {
             byte5 = 0xc4 + _power;
         }
@@ -191,9 +195,8 @@ namespace E32LORA {
             byte5 = 0x44 + _power;
         }
         let byte5String  = decToHexString(byte5, 16);
-
         let cmdBuffer=Buffer.fromHex(byte1String + addrString + "1a" + byte4String + byte5String)
-//        let cmdBuffer=Buffer.fromHex("c2" + addr + "1a" + byte4String + byte5String)
+
         return buffer2string(cmdBuffer);
     }
 
