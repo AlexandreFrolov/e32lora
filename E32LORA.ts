@@ -147,20 +147,20 @@ namespace E32LORA {
 
         let addrString: string = "";
         if(addr <= 255) {
-              addrString = "00" + decToHexString(addr, 16);
+          addrString = "00" + decToHexString(addr, 16);
         }
         else {
-              let lo: NumberFormat.UInt8LE = addr & 0xff;
-              let hi: NumberFormat.UInt8LE = (addr & 0xff00) >> 8;
-              addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
+          let lo: NumberFormat.UInt8LE = addr & 0xff;
+          let hi: NumberFormat.UInt8LE = (addr & 0xff00) >> 8;
+          addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
         }
 
         let byte1: NumberFormat.UInt8LE = 0;
         if(save == true) {
-            byte1 = 0xc0;
+          byte1 = 0xc0;
         }
         else {
-            byte1 = 0xc2;
+          byte1 = 0xc2;
         }
         let byte1String: string = decToHexString(byte1, 16);
 
