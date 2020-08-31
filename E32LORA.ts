@@ -156,7 +156,7 @@ namespace E32LORA {
         }
         else {
           trace(1);
-          return "0000";
+          addrString = "0000";
         }
 
         let byte1: NumberFormat.UInt8LE = 0;
