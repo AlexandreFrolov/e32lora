@@ -152,7 +152,7 @@ namespace E32LORA {
         else {
               let lo: NumberFormat.UInt8LE = addr & 0xff;
               let hi: NumberFormat.UInt8LE = (addr & 0xff00) >> 8;
-              addrString = decToHexString(hi), 16) + decToHexString(lo), 16);
+              addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
         }
 
         let byte1: NumberFormat.UInt8LE = 0;
