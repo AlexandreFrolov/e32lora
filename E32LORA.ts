@@ -1,18 +1,17 @@
-
-/*
     enum Power {
         //% block="20dBm (100mW)"
-        p20dBm = "0",
+        p20dBm,
         //% block="17dBm (50mW)"
-        p17dBm = "1",
+        p17dBm,
         //% block="14dBm (25mW)"
-        p14dBm = "2",
+        p14dBm,
         //% block="10dBm (10mW)"
-        p10dBm = "3"
+        p10dBm
     }
-*/
-/*
-    const enum UartBaud {
+
+
+
+    const enum UartBoud {
         //% block="1.2K"
         BaudRate1200 = "0",
         //% block="2.4K"
@@ -31,7 +30,8 @@
         BaudRate115200 = "7"
     }
 
-    const enum AirBaud {
+
+    const enum AirBoud {
         //% block="0.3K"
         BaudRate300 = "0",
         //% block="1.2K"
@@ -46,7 +46,7 @@
         BaudRate19200 = "5"
     }
 
-*/
+
 
 
 /**
@@ -59,8 +59,6 @@ namespace E32LORA {
 
 
     function E32LORA_init() {
-      serial.setRxBufferSize(32)
-      serial.setTxBufferSize(32)
     }
 
     /**
@@ -87,7 +85,7 @@ namespace E32LORA {
 
 
     E32LORA_init()
-
+//    setStatus(0x08)
 
     let onReceivedStringHandler: (receivedString: string) => void;
 
@@ -100,14 +98,14 @@ namespace E32LORA {
     })
 
 
+
     /**
      * decToHexString
      *
      * https://stackoverflow.com/questions/50967455/from-decimal-to-hexadecimal-without-tostring
      */
     function decToHexString(int: number, base: number): string {
-//        let letters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        let letters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+        let letters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
         let returnVal = "";
         if (base > 1 && base < 37) {
             while (int != 0) {
@@ -122,6 +120,7 @@ namespace E32LORA {
         if (returnVal.length == 1) {
             returnVal = "0" + returnVal
         }
+
         return returnVal;
     }
 
@@ -140,99 +139,37 @@ namespace E32LORA {
 
 
     /**
-     * e32config
+     * e32configNoSave
      */
     //% weight=46
-    //% block="E32LORA module config: | ADDR: %addr CHANNEL: %channel FIXED: %fixedm UART BAUD: %ubaud AIR BAUD: %airbaud POWER: %pwr SAVE CONFIG: %save"
-    //% addr.defl=0 addr.min=0 addr.max=65535 channel.min=0 channel.max=31 channel.defl=15 fixedm.defl=false ubaud.defl=UartBaud.BaudRate9600 airbaud.defl=AirBaud.BaudRate2400 pwr.defl=0 pwr.min=0 pwr.max=3 save.defl=false
-/*
-    export function e32config(addr: number, channel: number, fixedm: boolean, ubaud: UartBaud, airbaud: AirBaud, pwr: number, save: boolean): string {
-
-        // Parameters check. Halt if errors found.
-        let addrString: string = "";
-        if(addr < 0 || addr > 65535) {
-          errorHalt(11);
-        }
-        if(channel < 0 || channel > 31) {
-          errorHalt(12);
-        }
-        if(pwr < 0 || pwr > 3) {
-          errorHalt(13);
-        }
-
-        if(addr <= 255) {
-          addrString = "00" + decToHexString(addr, 16);
-        }
-        else if (addr <= 65535) {
-          let lo: NumberFormat.UInt8LE = addr & 0xff;
-          let hi: NumberFormat.UInt8LE = (addr & 0xff00) >> 8;
-          addrString = decToHexString(hi, 16) + decToHexString(lo, 16);
-        }
-
-        let byte1: NumberFormat.UInt8LE = 0;
-        if(save == true) {
-          byte1 = 0xc0; // Save the parameters when power down
-        }
-        else {
-          byte1 = 0xc2; // Do not save the parameters when power down
-        }
-        let byte1String: string = decToHexString(byte1, 16);
+    //% block="E32LORA config no save: | ADDR: %addr UART BAUD: %ubaud AIR BAUD: %airbaud POWER: %pwr"
+    //% addr.defl="0000" ubaud.defl=UartBoud.BaudRate9600 airbaud.defl=AirBoud.BaudRate2400 pwr.defl=Power.p10dBm
+    export function e32configNoSave(addr: string, ubaud: UartBoud, airbaud: AirBoud, pwr: Power): string {
 
         let _uartbaud: NumberFormat.UInt8LE = parseInt(ubaud);
         let _airbaud: NumberFormat.UInt8LE = parseInt(airbaud);
-        let byte3: NumberFormat.UInt8LE = ((_uartbaud << 3) + _airbaud) & 0x3f; // UART mode protection: 8N1 only available
+
+        OLED.writeStringNewLine(decToHexString(_uartbaud, 16))
+        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3);
+        OLED.writeStringNewLine(decToHexString(byte3, 16))
+
+//        let byte3: NumberFormat.UInt8LE = (_uartbaud << 3) + _airbaud;
+
         let byte3String: string = decToHexString(byte3, 16);
 
-        let byte4String: string = decToHexString(channel & 0x1f, 16); // 0x00...0x1f
 
-        let _power: NumberFormat.UInt8LE = pwr;
-        let byte5: NumberFormat.UInt8LE;
+        let cmdBuffer=Buffer.fromHex("c2" + addr )
+        let params: string = "";
 
-        // Set wireless wake-up time to default (250mc)
-        // Set TXD and AUX push-pull outputs to default (internal pull-up resistor)
-        // Turn on FEC (default)
-        if(fixedm == true) {
-            byte5 = 0xc4 + _power;
-        }
-        else {
-            byte5 = 0x44 + _power;
-        }
-        let byte5String  = decToHexString(byte5, 16);
-        let cmdBuffer=Buffer.fromHex(byte1String + addrString + "1a" + byte4String + byte5String)
-
-//        setSetupMode()
-//        e32auxTimeout(100)
-//        serial.writeBuffer(cmdBuffer)
-//        setNormalMode()
-//        e32auxTimeout(100)
-
-        return buffer2string(cmdBuffer);
-    }
-*/
-
-
-    /**
-     * errorHalt
-    */
-    function errorHalt(errno: number) {
-        while (true) {
-          basic.showIcon(IconNames.Sad);
-          basic.pause(2000)
-          basic.showString("E32:" + convertToText(errno));
-        }
-    }
-
-    /**
-     * buffer2string
-    */
-    function buffer2string(buf: Buffer): string {
-        let str: string = "";
-        let recArray=buf.toArray(NumberFormat.UInt8LE)
+        let recArray=cmdBuffer.toArray(NumberFormat.UInt8LE)
         for (let idx = 0; idx <= recArray.length - 1; idx++) {
-            str = str + (decToHexString(recArray[idx], 16) + " ")
+            params = "" + params + ("" + decToHexString(recArray[idx], 16) + " ")
         }
-      return str;
+
+//        return params
+        return "> " + byte3String
     }
+
 
 
     /**
@@ -267,13 +204,13 @@ namespace E32LORA {
     }
 
 
+
     /**
      * e32SendString
      */
     //% block
     //% weight=50
     export function e32SendString (str: string) {
-// Set buffers
       serial.writeLine(str)
     }
 
