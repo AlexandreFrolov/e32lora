@@ -59,6 +59,8 @@ namespace E32LORA {
 
 
     function E32LORA_init() {
+      serial.setRxBufferSize(32)
+      serial.setTxBufferSize(32)
     }
 
     /**
@@ -90,9 +92,6 @@ namespace E32LORA {
     let onReceivedStringHandler: (receivedString: string) => void;
 
     serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
-        serial.setRxBufferSize(32)
-        serial.setTxBufferSize(32)
-
         let str: string = serial.readString()
         onReceivedStringHandler(str)
     //    basic.showIcon(IconNames.Heart)
@@ -275,8 +274,6 @@ namespace E32LORA {
     //% weight=50
     export function e32SendString (str: string) {
 // Set buffers
-      serial.setRxBufferSize(32)
-      serial.setTxBufferSize(32)
       serial.writeLine(str)
     }
 
