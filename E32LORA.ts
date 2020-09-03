@@ -80,18 +80,19 @@ namespace E32LORA {
     function init() {
         if (initialized) return;
         initialized = true;
-//        onDataReceived(handleDataReceived);
+        onDataReceived(handleDataReceived);
     }
 
 
     E32LORA_init()
-//    setStatus(0x08)
 
 
-/*
     let onReceivedStringHandler: (receivedString: string) => void;
 
     serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+        serial.setRxBufferSize(32)
+        serial.setTxBufferSize(32)
+
         let str: string = serial.readString()
         onReceivedStringHandler(str)
     //    basic.showIcon(IconNames.Heart)
@@ -99,7 +100,6 @@ namespace E32LORA {
     //    basic.showIcon(IconNames.Yes)
     })
 
-*/
 
     /**
      * decToHexString
@@ -259,7 +259,6 @@ namespace E32LORA {
     /**
      * Registers code to run when the radio receives a string.
      */
-     /*
     //% help=radio/on-received-string
     //% block="on e32radio received" blockGap=16
     //% useLoc="E32LORA.onDataPacketReceived" draggableParameters=reporter
@@ -268,8 +267,6 @@ namespace E32LORA {
         onReceivedStringHandler = cb;
     }
 
-*/
-
 
     /**
      * e32SendString
@@ -277,6 +274,9 @@ namespace E32LORA {
     //% block
     //% weight=50
     export function e32SendString (str: string) {
+      serial.setRxBufferSize(32)
+      serial.setTxBufferSize(32)
+
       serial.writeLine(str)
     }
 
