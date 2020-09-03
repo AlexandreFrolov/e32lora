@@ -274,9 +274,9 @@ namespace E32LORA {
     //% block
     //% weight=50
     export function e32SendString (str: string) {
+// Set buffers
       serial.setRxBufferSize(32)
       serial.setTxBufferSize(32)
-
       serial.writeLine(str)
     }
 
