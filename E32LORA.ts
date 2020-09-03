@@ -206,6 +206,7 @@ namespace E32LORA {
 //        serial.writeBuffer(cmdBuffer)
 //        setNormalMode()
 //        e32auxTimeout(100)
+//
 
         return buffer2string(cmdBuffer);
     }
