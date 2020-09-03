@@ -80,7 +80,7 @@ namespace E32LORA {
     function init() {
         if (initialized) return;
         initialized = true;
-        onDataReceived(handleDataReceived);
+//        onDataReceived(handleDataReceived);
     }
 
 
