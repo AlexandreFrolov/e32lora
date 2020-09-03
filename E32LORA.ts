@@ -75,14 +75,15 @@ namespace E32LORA {
 
 
     let e32Pins = new E32PinConfig();
-    let initialized = false;
 
+/*
+    let initialized = false;
     function init() {
         if (initialized) return;
         initialized = true;
 //        onDataReceived(handleDataReceived);
     }
-
+*/
 
     E32LORA_init()
 //    setStatus(0x08)
@@ -253,8 +254,8 @@ namespace E32LORA {
           e32Pins.rx= rx;
           e32Pins.baud = baud;
 
-          serial.setRxBufferSize(32)
-          serial.setTxBufferSize(32)
+//          serial.setRxBufferSize(32)
+//          serial.setTxBufferSize(32)
 
     }
 
