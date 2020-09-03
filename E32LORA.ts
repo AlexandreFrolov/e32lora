@@ -252,6 +252,10 @@ namespace E32LORA {
           e32Pins.tx= tx;
           e32Pins.rx= rx;
           e32Pins.baud = baud;
+
+          serial.setRxBufferSize(32)
+          serial.setTxBufferSize(32)
+
     }
 
 
